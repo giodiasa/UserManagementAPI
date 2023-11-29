@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using UserManagement.Data.Entities;
 using UserManagement.Services.Services;
 
@@ -39,9 +40,17 @@ namespace UserManagement.Api.Controllers
         [HttpPost]
         public IActionResult AddUserProfile(UserProfile userProfile)
         {
-            _userProfileService.CreateUserProfile(userProfile);
+            try
+            {
+                _userProfileService.CreateUserProfile(userProfile);
 
-            return CreatedAtAction(nameof(GetUserProfileById), new { userProfileId = userProfile.UserProfileId }, userProfile);
+                return CreatedAtAction(nameof(GetUserProfileById), new { userProfileId = userProfile.UserProfileId }, userProfile);
+            }
+            catch (DbUpdateException ex)
+            {
+                return Conflict(ex.Message);
+            }
+            
         }
 
         [HttpPut("{userProfileId}")]

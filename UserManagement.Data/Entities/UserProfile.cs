@@ -13,10 +13,10 @@ namespace UserManagement.Data.Entities
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
 
-        [StringLength(11, ErrorMessage = "PersonalNumber must be 11 digits.")]
+        [StringLength(11, MinimumLength = 11, ErrorMessage = "PersonalNumber must be 11 digits.")]
         public string PersonalNumber { get; set; } = string.Empty;
 
         public int UserId { get; set; }
-        public User User { get; set; } = null!;
+        public User? User { get; set; }
     }
 }

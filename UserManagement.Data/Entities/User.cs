@@ -14,6 +14,6 @@ namespace UserManagement.Data.Entities
         public string Email { get; set; } = string.Empty;
         public bool IsActive { get; set; }
 
-        public UserProfile UserProfile { get; set; } = null!;
+        public UserProfile? UserProfile { get; set; }
     }
 }
