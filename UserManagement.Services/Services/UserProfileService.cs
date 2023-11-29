@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using UserManagement.Data;
 using UserManagement.Data.Entities;
+using UserManagement.Services.Interfaces;
 
 namespace UserManagement.Services.Services
 {
-    public class UserProfileService
+    public class UserProfileService : IUserProfileService
     {
         private readonly UserManagementContext _dbContext;
 

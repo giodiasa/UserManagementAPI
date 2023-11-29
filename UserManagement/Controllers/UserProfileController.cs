@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UserManagement.Data.Entities;
+using UserManagement.Services.Interfaces;
 using UserManagement.Services.Services;
 
 namespace UserManagement.Api.Controllers
@@ -10,9 +11,9 @@ namespace UserManagement.Api.Controllers
     [ApiController]
     public class UserProfileController : ControllerBase
     {
-        private readonly UserProfileService _userProfileService;
+        private readonly IUserProfileService _userProfileService;
 
-        public UserProfileController(UserProfileService userProfileService)
+        public UserProfileController(IUserProfileService userProfileService)
         {
             _userProfileService = userProfileService;
         }

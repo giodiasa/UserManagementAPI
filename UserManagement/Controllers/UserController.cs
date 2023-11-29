@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using UserManagement.Data.Entities;
 using UserManagement.Services.Services;
+using UserManagement.Services.Interfaces;
 
 namespace UserManagement.Api.Controllers
 {
@@ -9,8 +10,8 @@ namespace UserManagement.Api.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UserService _userService;
-        public UserController(UserService userService)
+        private readonly IUserService _userService;
+        public UserController(IUserService userService)
         {
             _userService = userService;
         }

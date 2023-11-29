@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using UserManagement.Data;
+using UserManagement.Services.Interfaces;
 using UserManagement.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,8 +16,8 @@ builder.Services.AddDbContext<UserManagementContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("UserManagementDbContextConnection"));
 });
-builder.Services.AddScoped<UserService>();
-builder.Services.AddScoped<UserProfileService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserProfileService, UserProfileService>();
 
 var app = builder.Build();
 
